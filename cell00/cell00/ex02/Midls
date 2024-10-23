@@ -1,0 +1,6 @@
+total 0
+drwxr-xr-x 3 tthitigu 2024_event 39 Oct 21 12:39 .
+drwxr-xr-x 4 tthitigu 2024_event 30 Oct 21 12:38 ..
+-rw-r--r-- 1 tthitigu 2024_event  0 Oct 21 12:39 Midls.txt
+drwxr-xr-x 2 tthitigu 2024_event  6 Oct 21 12:39 test.txt
+ls -m
