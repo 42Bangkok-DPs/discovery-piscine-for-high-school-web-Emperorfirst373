@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="changecolor()">Click me!</button>
+
+    <script>
+
+
+        function changecolor() {
+     
+            let bgcolor =  document.getElementsByTagName('body')[0]
+         
+            if (bgcolor.style.backgroundColor.length  == 0 || bgcolor.style.backgroundColor == '') {
+                bgcolor.style.backgroundColor = 'lightblue'
+            } 
+            else if (bgcolor.style.backgroundColor == 'red') {
+                  bgcolor.style.backgroundColor = ""
+            } else {
+                bgcolor.style.backgroundColor = 'red'
+            }
+        }
+    </script>
+</body>
+</html>

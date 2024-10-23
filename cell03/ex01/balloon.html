@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="background.css">
+</head>
+<body>
+      
+    <button onclick = "onclickballoon()">
+        <div id ="balloon"></div>
+    </button>
+
+    <script>
+    let ballonelement = document.getElementById('balloon');
+    let widthplus = ballonelement.offsetWidth;
+    let heightplus = ballonelement.offsetHeight;
+
+    let borderradius = 200
+
+    function onclickballoon() {
+
+       
+        if (ballonelement.style.backgroundColor.length  == 0 ||
+            ballonelement.style.backgroundColor == '' || ballonelement.style.backgroundColor == 'red') {
+            ballonelement.style.backgroundColor = 'green'
+            } 
+           else if (ballonelement.style.backgroundColor == 'green') {
+                ballonelement.style.backgroundColor = 'blue'
+            } else if(ballonelement.style.backgroundColor = 'blue'){
+                ballonelement.style.backgroundColor = 'red'
+            }
+            widthplus = widthplus + 10,heightplus = heightplus + 10,borderradius = borderradius + 10
+
+            ballonelement.style.width = `${(widthplus).toString()}px`
+            ballonelement.style.height = `${(heightplus).toString()}px`
+            ballonelement.style.borderRadius = `${(borderradius).toString()}px`;
+        
+           if (ballonelement.style.width  > '420px' ) {
+             ballonelement.style.width = '200px'
+             ballonelement.style.height = '200px'
+             widthplus = ballonelement.offsetWidth,heightplus=ballonelement.offsetHeight,borderradius = 200
+       
+        }
+           
+    }
+
+
+    ballonelement.addEventListener('mouseleave', () => {
+        widthplus = widthplus-5,heightplus = heightplus -5
+        ballonelement.style.width = `${(widthplus).toString()}px`
+        ballonelement.style.height = `${(heightplus).toString()}px`
+    });
+     
+    
+
+        
+    
+
+    </script>
+</body>
+</html>
