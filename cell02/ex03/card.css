@@ -1,0 +1,40 @@
+.container {
+    width: 100%;
+ 
+    box-shadow: 12px 0 15px -14px rgba(17, 18, 18, 0.8), -12px 0 8px -14px rgba(17, 17, 17, 0.8);
+
+
+}
+
+.container p ,h1{
+    text-align: center;
+}
+
+
+.biggest-container {
+    position: relative;
+    left: 25%;
+    width: 20%;
+    height: 50em;
+
+}
+
+
+
+.container img,div div {
+    width: 100%;
+    background-color: white;
+    
+
+}
+
+
+
+.footer {
+    background: black;
+    height: 50px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
