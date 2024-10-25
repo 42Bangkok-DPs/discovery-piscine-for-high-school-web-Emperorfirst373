@@ -1,5 +1,31 @@
+// Helper functions for setting, getting, and deleting cookies
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
 
-const collectdata = JSON.parse(localStorage.getItem('myArray')) || []; // Load existing data or initialize as empty
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function deleteCookie(name) {   
+    document.cookie = name + "=; Max-Age=-99999999;";  
+}
+
+// Load existing data or initialize as empty
+const collectdata = JSON.parse(getCookie('myArray') || "[]");
 
 function addTodo(data) {
     const todoInput = document.getElementById('todo_input');
@@ -12,19 +38,19 @@ function addTodo(data) {
         newTodo.textContent = todoText;
         ftList.insertBefore(newTodo, ftList.firstChild);
 
-        // Add new todo to array and update local storage
+        // Add new todo to array and update cookie
         collectdata.push(todoText);
-        localStorage.setItem('myArray', JSON.stringify(collectdata));
+        setCookie('myArray', JSON.stringify(collectdata), 7);
 
         // Add event listener for removal
         newTodo.addEventListener("click", () => {
             if (confirm("Press a button!\nDo you want to remove this TO-DO?")) {
                 newTodo.remove();
-                // Update collectdata and local storage when an item is removed
+                // Update collectdata and cookie when an item is removed
                 const index = collectdata.indexOf(todoText);
                 if (index > -1) {
                     collectdata.splice(index, 1);
-                    localStorage.setItem('myArray', JSON.stringify(collectdata));
+                    setCookie('myArray', JSON.stringify(collectdata), 7);
                 }
             }
         });
@@ -43,23 +69,19 @@ function addTodo(data) {
             newTodo.addEventListener("click", () => {
                 if (confirm("Press a button!\nDo you want to remove this TO-DO?")) {
                     newTodo.remove();
-                    // Update collectdata and local storage when an item is removed
+                    // Update collectdata and cookie when an item is removed
                     const index = collectdata.indexOf(item);
                     if (index > -1) {
                         collectdata.splice(index, 1);
-                        localStorage.setItem('myArray', JSON.stringify(collectdata));
+                        setCookie('myArray', JSON.stringify(collectdata), 7);
                     }
                 }
             });
         });
     }
-
-// Check if there's saved data in localStorage and populate the list on page load
-
-
-
 }
 
+// Check if there's saved data in cookies and populate the list on page load
 if (collectdata.length > 0) {
     addTodo(collectdata);
 }
