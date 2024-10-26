@@ -32,6 +32,9 @@
                 if (!isNaN(firstval) && !isNaN(secondval) && radios != undefined) {
                     result = radios == "+" ? firstval+secondval:
                     radios=='-'?firstval-secondval:radios=='x'?firstval*secondval:radios=='÷'?firstval/secondval: ''
+                    if (result > 9000) {
+                        result = "It's over 9000"
+                    }
                     alert(result)
                 } else {alert('all input is required')}
             })
